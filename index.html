@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>CoMeDi: <u>Co</u>ntext and <u>Me</u>aning: Navigating <u>Di</u>sagreements</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Prevent caching -->
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+<style>
+/* Customize container */
+@media (min-width: 968px) {
+  .container {
+    max-width: 968px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+/* Customize dropdown menu */
+.dropdown {
+ cursor: pointer;
+}
+.dropdown sup {
+ color: rgb(66, 139, 202);
+}
+.dropdown sup:hover, .dropdown sup:focus {
+    color: rgb(42, 100, 150);
+    text-decoration: underline;
+}
+.dropdown-menu {
+  min-width: 500px;
+  left: -200px;
+}
+.dropdown-menu li {
+  margin-bottom: .5em;
+  /*border-top-style:solid; padding-left:10px;*/
+}
+
+ol.answers {
+  padding-top: 0;
+  margin-bottom: 1em;
+}
+
+.task-example {
+  border: 2px solid #ccc;
+  padding: 1em;
+  margin: 1em;
+}
+
+.ent {
+  font-weight: bold;
+  color: #686;
+}
+
+</style>
+</head>
+
+<body data-spy="scroll" data-target="#navbar" data-offset="70" onload="load()">
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">CoMeDi</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#speakers">Invited Speakers</a></li>
+	    <li><a href="#program">Program</a></li>
+            <!--li><a href="#call">Call</a></li-->
+            <li><a href="#task">Shared Task</a></li>
+            <!--li><a href="#leaderboards">Leaderboards</a></li-->
+            <!--li><a href="#dates">Dates</a></li-->
+            <li><a href="#organizers">Organizers &amp; Committee</a></li>
+           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://coling2025.org/">COLING 2025</a></li>
+            <!--li><a href="../navbar-static-top/">Static top</a></li-->
+            <!--li class="active"><a href="./">Fixed top</a></li-->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+<br/>
+<br/>
+
+<br/>
+<center><h2 id="top"><b>CoMeDi: <u>Co</u>ntext and <u>Me</u>aning: Navigating <u>Di</u>sagreements in NLP Annotations</b></h2></center>
+<center><h4>Workshop to be held in conjunction with COLING 2025 in Abu Dhabi</h4></center>
+<center><h4>January 19/20, 2025</h4></center>
+<br/>
+
+<br/>
+<!--div class="alert alert-success" role="alert">
+<strong>Update: </strong>We are excited to announce the full workshop program, which you can view <a href="#program">here</a>
+</div-->
+
+  <p>Disagreements among annotators pose a significant challenge in Natural Language Processing, impacting the quality and reliability of datasets and consequently the performance of NLP models. This workshop aims to explore the complexities of annotation disagreements, their causes, and strategies towards their effective resolution, with a focus on meaning in context.</p>
+
+  <p>The quality and reliability of annotated data is crucial for the development of robust NLP models. However, managing disagreements among annotators poses significant challenges to researchers and practitioners. Such disagreements can stem from various factors, including subjective interpretations, cultural biases, and ambiguous guidelines. Early research has highlighted the impact of annotator disagreements on data quality and model performance (e.g. Artstein and Poesio, 2008; Pustejovsky and Stubbs, 2012; Plank et al., 2014).</p>
+
+<p>More recent work on perspectivism in NLP, such as that by Basile et al. (2021), highlights the importance of embracing multiple perspectives in annotation tasks to better capture the diversity of human language. This approach argues for the inclusion of various viewpoints to improve the robustness and fairness of NLP models. On the modeling side, various methods for dealing with annotation disagreements have been proposed. For example, Hovy et al. (2013) and Passonneau and Carpenter (2014) identify and weigh annotator reliability to better aggregate contributions, whereas recent approaches following the perspectivism approach leverage inherent disagreements in subjective tasks to train models handling diverse opinions (Davani et al., 2022; Deng et al., 2023).</p>
+
+<a name="speakers"></a>
+<div class="page-header">
+  <h1>Invited Speaker(s)</h1>
+</div>
+
+<ul>
+<li><p><h4>TBA</h4></p></li>
+<p>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#xxxabs" aria-expanded="false" aria-controls="collapseExample">
+    Abstract
+  </button>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#xxxbio" aria-expanded="false" aria-controls="collapseExample">
+    Bio
+  </button>
+</p>
+<div class="collapse" id="xxxabs">
+  <div class="card card-body">
+    <p>TBD</p>
+  </div>
+</div>
+<div class="collapse" id="xxxbio">
+  <div class="card card-body">
+    <p>TBD</p>
+  </div>
+</div>
+</li>
+</ul>
+
+<a name="call"></a>
+<div class="page-header">
+  <h1>Call for Submissions</h1>
+</div>
+<p>We invite both long (8 pages) and short (4 page) papers. The limits refer to
+the content and any number of additional pages for references are allowed. The
+papers should follow the COLING 2025 formatting instructions.</p>
+
+<p>Each submission must be anonymized, written in English, and contain a title and
+abstract. We especially welcome the following types of papers:</p>
+
+<ul>
+<li>TODO
+</ul>
+
+<p>Please submit your papers at TODO</p>
+
+
+<a name="task"></a>
+<div class="page-header">
+  <h1>Shared Task</h1>
+</div>
+
+<p>The role of linguistic-semantic factors causing disagreements, and the extent to which such cases can potentially be predicted, has been scarcely investigated. Building on previous research on ambiguities arising from pronominal anaphora (Yang et al., 2010) and implicit references (Roth et al., 2022), we will host a shared task on predicting disagreements on word sense annotation in context.</p>
+
+<a name="dates"></a>
+<div class="page-header">
+  <h1>Important Dates</h1>
+</div>
+<ul>
+  <li>July 2024: Release of shared-task trial data</li>
+  <li>August 2024: Release of shared-task training data</li>
+  <li>September 2024: Shared task evaluation phase</li>
+  <li>October 2024: Due date for workshop and shared task papers</li>
+  <li>November 2024: Notification of acceptance</li>
+  <li>January 19/20, 2025: Workshop date</li>
+</ul>
+
+All deadlines refer to 11:59pm GMT -12 hours ("anywhere in the world").
+
+<a name="organizers"></a>
+<div class="page-header">
+  <h1>Organizers</h1>
+</div>
+<ul class="list-unstyled">
+<li><a target="_blank" href="https://www.ims.uni-stuttgart.de/en/institute/team/Roth-00006/">Michael Roth</a>, University of Stuttgart</li>
+<li><a target="_blank" href="https://www.ims.uni-stuttgart.de/institut/team/Schlechtweg/">Dominik Schlechtweg</a>, University of Stuttgart</li>
+</ul>
+
+<h3>Program Committee<a name="committee" ></a></h3>
+
+<ul class="list-unstyled">
+  <li>David Alfter, University of Gothenburg</li>
+  <li>Felipe Bravo, University of Chile</li>
+  <li>Jing Chen, Hong Kong Polytechnic University</li>
+  <li>Dubossarsky Haim, Queen Mary University</li>
+  <li>Simon Hengchen, Université de Genève</li>
+  <li>Andrei Kutuzov, University of Oslo</li>
+  <li>Pauline Sander, University of Stuttgart</li>
+  <li>Nina Tahmasebi, University of Gothenburg</li>
+  <li>Frank D. Zamora-Reina, University of Chile</li>
+  <li>Wei Zhao, University of Aberdeen</li>
+</ul>
+
+<hr>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!--<script src="data/leaderboards/leaderboard1.js"></script>
+<script src="data/leaderboards/leaderboard2.js"></script>-->
+
+   <div class="footer">
+      <div class="container">
+        <p class="text-muted">Website by Michael Roth, powered by <a href="http://www.getbootstrap.com">Bootstrap</a></p>
+        <br/>
+      </div>
+    </div>
+
+</div>
+
+</body>
+</html>
