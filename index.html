@@ -191,7 +191,7 @@ abstract. We especially welcome papers that address the following themes, for a 
 
 <p>The role of linguistic-semantic factors causing disagreements, and the extent to which such cases can potentially be predicted, has been scarcely investigated. Building on previous research on ambiguities arising from pronominal anaphora (Yang et al., 2010) and implicit references (Roth et al., 2022), we will host a shared task on <b>predicting disagreements</b> on word sense annotation in context (a.k.a. <b>Word-in-Context</b>, WiC). Realistic WiC datasets often show considerable disagreement. Consequently, we lose information when discarding instances during aggregation or summarizing them by majority or median judgment. Recent research has started to incorporate this information by using alternative label aggregation methods (Uma et al., 2022; Leonardelli et al., 2023). Modelling this disagreement is important because in a real world scenario we most often do not have clean data. We need to do prediction on samples where high disagreement is expected and which are inherently difficult to categorize. Predicting disagreement can help to detect or filter highly complicated samples.</p>
 
-<p>Participants are asked to solve two subtasks. Both rely on data from human WiC judgments on an ordinal scale, such as the <a href="https://zenodo.org/records/7387261">DWUG EN dataset</a> (Schlechtweg et al., 2021). Each instance has a target word $w$, for which <b>two word uses</b>, $u_1$ and $u_2$, are provided (use pair). Each of these uses expresses a specific meaning of $w$. Annotators were asked to provide labels on an <b>ordinal relatedness scale</b> from 1 (the two uses of the word have completely unrelated meanings) to 4 (the two uses of the word have identical meanings) following the DURel annotation framework (Schlechtweg et al., 2018). As an example, consider the two annotation instances below. Pair (1,2) would likely receive label 4 (identical) while pair (1,4) would rather receive a lower label such as 2 (distantly related).</p>
+<p>Participants are asked to solve two subtasks. Both rely on data from human WiC judgments on an ordinal scale, such as the <a href="https://zenodo.org/records/7387261">DWUG EN dataset</a> (Schlechtweg et al., 2021). Each instance has a target word $w$, for which <b>two word uses</b>, $u_1$ and $u_2$, are provided (use pair). Each of these uses expresses a specific meaning of $w$. Annotators were asked to provide labels on an <b>ordinal relatedness scale</b> from 1 (the two uses of the word have completely unrelated meanings) to 4 (the two uses of the word have identical meanings) following the DURel annotation framework (Schlechtweg et al., 2018). As an example, consider the two annotation instances below. Pair (1,2) would likely receive label 4 (identical) while pair (1,3) would rather receive a lower label such as 2 (distantly related).</p>
 
  <ol start="1">
       <li>...and taking a knife from her pocket, she opened a vein in her little <b>arm</b>.</li>
@@ -203,27 +203,30 @@ abstract. We especially welcome papers that address the following themes, for a 
 
  <ol start="1">
       <li>...and taking a knife from her pocket, she opened a vein in her little <b>arm</b>.</li>
-      <li value="4">It stood behind a high brick wall, its back windows overlooking an <b>arm</b> of the sea which, at low tide, was a black and stinking mud-flat.</li>
+      <li value="3">It stood behind a high brick wall, its back windows overlooking an <b>arm</b> of the sea which, at low tide, was a black and stinking mud-flat.</li>
       <ul>
       <li>Sample judgments: [2,3,2]; median: 2; mean pairwise difference: 0.667</li>
     </ul>
   </ol>
 
+<h3>Subtask 1: Median Judgment Classification with Ordinal Word-in-Context Judgments (OGWiC) <a name="Subtask1" ></a></h3>
 
-<h3>Subtask 1: Ordinal Word-in-Context Detection (OGWiC)<a name="Subtask1" ></a></h3>
-
-<p>For each use pair $(u_1,u_2)$ participants are asked to predict the median of annotator judgments. This task is similar to the previous WiC (Pilehvar et al., 2019) and GWiC (Armendariz et al., 2020) tasks. However, we limit the label set in predictions and penalize stronger deviations from the true label. This makes OGWiC an <b>ordinal classification task</b> (Sakai, 2021), in contrast to binary classification (WiC) or ranking (GWiC).
+<p>For each use pair $(u_1,u_2)$ participants are asked to predict the median of annotator judgments. This task is similar to the previous WiC (Pilehvar et al., 2019) and GWiC (Armendariz et al., 2020) tasks. However, we limit the label set in predictions and penalize stronger deviations from the true label. This makes OGWiC an <b>ordinal classification task</b> (Sakai, 2021), in contrast to binary classification (WiC) or ranking (GWiC). Predictions will be evaluated against the median labels with the ordinal version of Krippendorff's $\alpha$ (Krippendorff, 2018).
 </p>
 
-<h3>Subtask 2: Disagreement in Word-in-Context Detection (DisWiC)<a name="Subtask2" ></a></h3>
+<p>Treating graded WiC as an ordinal classification task instead of a ranking task constrains model predictions to exactly reproduce instance labels instead of just inferring their relative order. This is advantageous if ordinal labels have an interpretation because predictions then inherit this interpretation. Such an interpretation can be assigned to the DURel scale as explained in Schlechtweg et al. (2018) and in more detail in Schlechtweg (2023, pp. 22-23): Judgment 1-4 can be interpreted as "homonymy" (1), "polysemy" (2), "context variance" (3) and "identity" (4), respectively.
+</p>
 
-<p>For each use pair $(u_1,u_2)$ participants are asked to predict the mean of pairwise absolute judgment differences between annotators: $D(J)=\frac{1}{|J|}\sum_{(j_1,j_2)\in J}(|j_1-j_2|)$, where $J$ is the set of unique pairwise combinations of judgments. For pair (1,2) from above, $D(J)=\frac{1}{2}(|(4-4)|+|(4-4)|)=0.0$ while for (1,4) it amounts to $\frac{1}{3}(|(2-3)|+|(2-2)|+|(3-2)|)=0.667$. DisWiC can be seen as a <b>ranking task</b>. Participants are asked to rank instances according to the magnitude of disagreement observed between annotators. It differs from previous tasks (Leonardelli et al., 2023) by aggregating "gold" labels purely over judgment differences, thus making disagreement the explicit detection aim.</p>
   
-  <h3>Organization<a name="OrganizationTask" ></a></h3>
+<h3>Subtask 2: Mean Disagreement Ranking with Ordinal Word-in-Context Judgments (DisWiC)<a name="Subtask2" ></a></h3>
+
+<p>For each use pair $(u_1,u_2)$ participants are asked to predict the mean of pairwise absolute judgment differences between annotators: $D(J)=\frac{1}{|J|}\sum_{(j_1,j_2)\in J}(|j_1-j_2|)$, where $J$ is the set of unique pairwise combinations of judgments. For pair (1,2) from above, $D(J)=\frac{1}{2}(|(4-4)|+|(4-4)|)=0.0$ while for (1,4) it amounts to $\frac{1}{3}(|(2-3)|+|(2-2)|+|(3-2)|)=0.667$. DisWiC can be seen as a <b>ranking task</b>. Participants are asked to rank instances according to the magnitude of disagreement observed between annotators. It differs from previous tasks (Leonardelli et al., 2023) by aggregating "gold" labels purely over judgment differences, thus making disagreement the explicit ranking aim. Predictions will be evaluated against the mean disagreement labels with Spearman's $\rho$ (Spearman, 1904).</p>
   
-  <p>Our CodaLab competition instance and trial data will be linked here soon.</p>
+<h3>Organization<a name="OrganizationTask" ></a></h3>
   
-<p>The task is organized by Dominik Schlechtweg, Tejaswi Choppa, Nash Whaley, Wei Zhao and Michael Roth.</p>
+<p>Please register to our <a href="https://codalab.lisn.upsaclay.fr/competitions/20077">CodaLab competition</a> and our <a href="https://groups.google.com/g/comedi-shared-task">Google group</a> to participate. (After login to your Google account, you should be able to join the group directly.) The provided starting kits contain training and development data, a description of the data format, the evaluation scripts, baseline scripts and a sample answer/prediction that can be readily uploaded to CodaLab. If you have any questions, please ask them through our Google group.</p>
+  
+<p>The task is organized by Dominik Schlechtweg, Tejaswi Choppa, Wei Zhao and Michael Roth.</p>
 
 
 <a name="dates"></a>
@@ -231,16 +234,19 @@ abstract. We especially welcome papers that address the following themes, for a 
   <h1>Important Dates</h1>
 </div>
 <ul>
-  <li>Early August 2024: Release of shared-task trial data</li>
-  <li>August 2024: Release of shared-task training data</li>
-  <li>October 2024: Shared task evaluation phase</li>
-  <li>25 November 2024: Due date for workshop and shared task papers</li>
-  <li>5 December 2024: Notification of acceptance</li>
-  <li>13 December 2024: Camera-ready submission deadline</li>
+  <li>August 23, 2024: Release of shared-task training and development data</li>
+  <li>August 23, 2024: Start of development phase for Subtask 1</li>
+  <li>September 15, 2024: Start of development phase for Subtask 2</li>
+  <li>October 14, 2024: Start of evaluation phase for Subtask 1</li>
+  <li>October 20, 2024: Start of evaluation phase for Subtask 2</li>
+  <li>October 30, 2024: Release of competition results.</li>
+  <li>November 25, 2024: Due date for workshop and shared task papers</li>
+  <li>December 5, 2024: Notification of acceptance</li>
+  <li>December 13, 2024: Camera-ready submission deadline</li>
   <li>January 19/20, 2025: Workshop date</li>
 </ul>
 
-All deadlines refer to 11:59pm GMT -12 hours ("anywhere in the world").
+Shared task deadlines refer to 11:59pm UTC. All other deadlines refer to 11:59pm GMT -12 hours ("anywhere in the world").
 
 <a name="organizers"></a>
 <div class="page-header">
@@ -284,10 +290,13 @@ All deadlines refer to 11:59pm GMT -12 hours ("anywhere in the world").
 
 <ul>
   <li>Carlos Santos Armendariz, Matthew Purver, Senja Pollak, Nikola Ljubešić, Matej Ulčar, Ivan Vulić, and Mohammad Taher Pilehvar. 2020. <a href="https://aclanthology.org/2020.semeval-1.3/">SemEval-2020 task 3: Graded word similarity in context</a>. In Proceedings of the Fourteenth Workshop on Semantic Evaluation, pages 36–49, Barcelona (online). International Committee for Computational Linguistics.</li>
-    <li>Elisa Leonardelli, Gavin Abercrombie, Dina Almanea, Valerio Basile, Tommaso Fornaciari, Barbara Plank, Verena Rieser, Alexandra Uma, and Massimo Poesio. 2023. <a href="https://aclanthology.org/2023.semeval-1.314/">SemEval-2023 Task 11: Learning with Disagreements (LeWiDi)</a>. In Proceedings of the 17th International Workshop on Semantic Evaluation (SemEval-2023), pages 2304–2318, Toronto, Canada. Association for Computational Linguistics.</li>
+  <li>Klaus Krippendorff. 2018. <a href="https://methods.sagepub.com/book/content-analysis-4e">Content Analysis: An Introduction to Its Methodology.</a>. SAGE Publications.</li>
+  <li>Elisa Leonardelli, Gavin Abercrombie, Dina Almanea, Valerio Basile, Tommaso Fornaciari, Barbara Plank, Verena Rieser, Alexandra Uma, and Massimo Poesio. 2023. <a href="https://aclanthology.org/2023.semeval-1.314/">SemEval-2023 Task 11: Learning with Disagreements (LeWiDi)</a>. In Proceedings of the 17th International Workshop on Semantic Evaluation (SemEval-2023), pages 2304–2318, Toronto, Canada. Association for Computational Linguistics.</li>
   <li>Tetsuya Sakai. 2021. <a href="https://aclanthology.org/2021.acl-long.214/">Evaluating Evaluation Measures for Ordinal Classification and Ordinal Quantification</a>. In Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers), pages 2759–2769, Online. Association for Computational Linguistics. </li>
   <li>Dominik Schlechtweg, Sabine Schulte im Walde, and Stefanie Eckmann. 2018. <a href="https://aclanthology.org/N18-2027/">Diachronic Usage Relatedness (DURel): A Framework for the Annotation of Lexical Semantic Change</a>. In Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 2 (Short Papers), pages 169–174, New Orleans, Louisiana. Association for Computational Linguistics.</li>
   <li>Dominik Schlechtweg, Nina Tahmasebi, Simon Hengchen, Haim Dubossarsky, and Barbara McGillivray. 2021. <a href="https://aclanthology.org/2021.emnlp-main.567/">DWUG: A large Resource of Diachronic Word Usage Graphs in Four Languages</a>. In Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing, pages 7079–7091, Online and Punta Cana, Dominican Republic. Association for Computational Linguistics.</li>
+  <li>Dominik Schlechtweg. 2023. <a href="http://dx.doi.org/10.18419/opus-12833">Human and Computational Measurement of Lexical Semantic Change</a>. Ph.D. thesis, University of Stuttgart, Stuttgart, Germany.</li>  
+  <li>Charles Spearman. 1904. <a href="https://doi.org/10.2307/1412159">The proof and measurement of association between two things.</a>. In American Journal of Psychology, 15(1), 72–101.</li>
   <li>Mohammad Taher Pilehvar and Jose Camacho-Collados. 2019. <a href="https://aclanthology.org/N19-1128/">WiC: the Word-in-Context Dataset for Evaluating Context-Sensitive Meaning</a>. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers), pages 1267–1273, Minneapolis, Minnesota. Association for Computational Linguistics.</li>
   <li>Michael Roth, Talita Anthonio, and Anna Sauer. 2022. <a href="https://aclanthology.org/2022.semeval-1.146/">SemEval-2022 task 7: Identifying plausible clari cations of implicit and underspecifed phrases in instructional texts</a>. In Proceedings of the 16th International Workshop on Semantic Evaluation (SemEval-2022), pages 1039–1049, Seattle, United States. Association for Computational Linguistics.</li>
   <li>Alexandra N. Uma, Tommaso Fornaciari, Dirk Hovy, Silviu Paun, Barbara Plank, and Massimo Poesio. 2022. <a href="https://doi.org/10.1613/jair.1.12752">Learning from disagreement: A survey</a>. J. Artif. Int. Res., 72:1385—1470.</li>
