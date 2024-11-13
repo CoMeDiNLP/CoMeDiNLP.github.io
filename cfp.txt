@@ -1,0 +1,115 @@
+********************************************************************************
+
+CoMeDiNLP: Context and Meaning--Navigating Disagreements in NLP Annotations
+https://comedinlp.github.io/
+
+Workshop held in conjunction with COLING 2025
+January 19/20, 2025
+
+********************************************************************************
+
+Disagreements among annotators pose a significant challenge in Natural Language
+Processing, impacting the quality and reliability of datasets and consequently
+the performance of NLP models. This workshop aims to explore the complexities of
+annotation disagreements, their causes, and strategies towards their effective
+resolution, with a focus on meaning in context.
+
+The quality and reliability of annotated data is crucial for the development of
+robust NLP models. However, managing disagreements among annotators poses
+significant challenges to researchers and practitioners. Such disagreements can
+stem from various factors, including subjective interpretations, cultural biases
+and ambiguous guidelines. Early research has highlighted the impact of annotator
+disagreements on data quality and model performance (e.g. Artstein and Poesio, 
+2008; Pustejovsky and Stubbs, 2012; Plank et al., 2014).
+
+More recent work on perspectivism in NLP, such as that by Basile et al. (2021),
+highlights the importance of embracing multiple perspectives in annotation tasks
+to better capture the diversity of human language. This approach argues for the
+inclusion of various viewpoints to improve the robustness and fairness of NLP
+models. On the modeling side, various methods for dealing with annotation
+disagreements have been proposed. For example, Hovy et al. (2013) and Passonneau
+and Carpenter (2014) identify and weigh annotator reliability to better aggregate
+contributions, whereas recent approaches following the perspectivism approach
+leverage inherent disagreements in subjective tasks to train models handling
+diverse opinions (Davani et al., 2022; Deng et al., 2023).
+
+
+== Call for Submissions ==
+
+We invite both long (8 pages) and short (4 page) papers. The limits refer to the
+content and any number of additional pages for references are allowed. The 
+papers should follow the COLING 2025 formatting instructions.
+
+Each submission must be anonymized, written in English, and contain a title and
+abstract. We especially welcome papers that address the following themes, for a
+single type of disagreement or annotation disagreements in general:
+
+- New benchmarks for detecting or categorizing disagreements
+- Models and modeling strategies for variations in annotation
+- Evaluation schemes and metrics for phenomena without a single ground truth
+- Phenomena that are not yet within reach with current NLP technology.
+
+To encourage discussion and community building and to bootstrap potential
+collaborations, we elicit, in addition to shared task papers and regular 
+"archival" track papers, also non-archival submissions. These can take 2 forms:
+
+- Works in progress, that are not yet mature enough for a full submission, can
+be submitted in the form of a title and abstract. Abstracts may be up to two
+pages in length.
+- Already published work, or work currently under submission elsewhere, can be
+submitted in the form of an abstract and a copy of the submission/publication.
+
+These works will be reviewed for topical fit and accepted submissions will be
+presented as posters. Depending on the final workshop program, selected works
+may be presented in panels. We plan for these to be an opportunity for
+researchers to present and discuss their work with the relevant community.
+
+Please submit your papers here: https://softconf.com/coling2025/CM-ND-NLP25/
+
+
+== Important Dates ==
+
+November 18, 2024: Due date for workshop and shared task papers [1]
+December 1-3, 2024: Author response period
+December 5, 2024: Notification of acceptance
+December 13, 2024: Camera-ready submission deadline
+January 19/20, 2025: Workshop date
+
+All deadlines are 11:59pm UTC-12 ("anywhere on Earth").
+
+[1] If you plan to submit a paper but require a deadline extension, please send
+us an email to michael.roth@utn.de and dominik.schlechtweg@ims.uni-stuttgart.de
+
+
+== Organizers ==
+
+Michael Roth, University of Technology Nuremberg
+Dominik Schlechtweg, University of Stuttgart
+
+
+== Program Committee ==
+
+David Alfter, University of Gothenburg
+Valerio Basile, University of Turin
+Felipe Bravo, University of Chile
+Jing Chen, Hong Kong Polytechnic University
+Naihao Deng, University of Michigan
+Aida Mostafazadeh Davani, Google Research
+Diego Frassinelli, University of Konstanz / LMU Munich
+Haim Dubossarsky, Queen Mary University
+Simon Hengchen, iguanodon.ai & Université de Genève
+Sandra Kübler, Indiana University
+Andrei Kutuzov, University of Oslo
+Elisa Leonardelli, Fondazione Bruno Kessler
+Marie-Catherine de Marneffe, UCLouvain
+Maja Pavlovic, Queen Mary University
+Siyao Peng, LMU Munich
+Pauline Sander, University of Stuttgart
+Pia Sommerauer, Vrije Universiteit Amsterdam
+Nina Tahmasebi, University of Gothenburg
+Alexandra Uma
+Frank D. Zamora-Reina, University of Chile
+Wei Zhao, University of Aberdeen
+
+
+
